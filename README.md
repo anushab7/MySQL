@@ -98,7 +98,7 @@ After forking the [MySQL](https://github.com/ecloudcontrol/MySQL) application, a
 
 After customizing `appz.yaml` file, you should add the **Webhook**. You can get the **webhook** in the Output section of the Cloud Formation, at the end of **AppZ** Cluster creation. Follow the instructions here:[how to add webhook](https://www.ecloudcontrol.com/how-to-add-webhook-in-github/). Make sure the content type is **application/json**.
 
-Once **Webhook** is added, you should change the following in `setup.yaml`
+Once **Webhook** is added, you should change the token in `setup.yaml` and commit the changes.
 
 1. "token" under **restore** section.
   * token:<yearmonthdate-current UTC Time+10min>
