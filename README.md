@@ -4,7 +4,7 @@
 
 MySQL is an open source relational database management system. AppZ currently offers MySQL-5.7.
 
-## Features:
+### Features:
 
 1. Fully managed stateful MySQL-5.7 deployment using GitOps from Client’s Git repository.
 1. All the Database secrets are  Stored  in AppZ Vault.
@@ -14,11 +14,6 @@ MySQL is an open source relational database management system. AppZ currently of
 ## Pre-requisites
 * **Setup AppZ Cluster**- Install **AppZ** Cluster from AWS Marketplace. Find the instructions at our [product documentation](https://docs.ecloudcontrol.com/installer-3.0/aws-marketplace/).
 Before deploying MySQL application, make sure the [Vault](https://docs.ecloudcontrol.com/vault-1.2/) application is deployed.
-
-
-## Stack Code
-
-**mysql-5.7** - To be mentioned in build.image_template in `appz.yml`. See 'Sample AppZ Yaml'
 
 
 ## Sample Project
@@ -68,6 +63,12 @@ If you fork [MySQL](https://github.com/ecloudcontrol/MySQL) under your Git accou
         nano: 67
 ```
 
+### Properties
+
+The image is vault enabled so secrets can be pulled from vault. These are placed under `properties` in `appz.yml`. Please check each one below, with its actual purpose.
+
+- **MYSQL_SPRINGBOOTWEB_PASSWORD** - Password of the MySQL user 'springboot-web'.
+- **MYSQL_ROOT_PASSWORD** - Password of the MySQL user 'root'.
 
 ###  setup.yaml
 
@@ -94,7 +95,7 @@ restore:
     password: $MYSQL_ROOT_PASSWORD  # password of the 'user' above.
     token:  20201211-1415 # The restore token to be validated before restoring the database. (Same as TEARDOWN_TOKEN)
 ```
-##
+
 
  * In the users section, name of each user (to be created) with password is required.
 
@@ -105,15 +106,8 @@ restore:
  * In the restore section, the database name, the restore token and the backup url should be given. For password protected urls, authorised username and password should be given (under the 'source') in addition to these.
 
 
-### Properties
-
-The image is vault enabled so secrets can be pulled from vault. These are placed under `properties` in `appz.yml`. Please check each one below, with its actual purpose.
-##
-##
-- **MYSQL_SPRINGBOOTWEB_PASSWORD** - Password of the MySQL user 'springboot-web'.
-- **MYSQL_ROOT_PASSWORD** - Password of the MySQL user 'root'.
-
 ### Resilience
+
 Capable of running unlimited number of replicas across multiple regions/datacenters.
 
 ### Volumes
