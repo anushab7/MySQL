@@ -89,9 +89,7 @@ restore:
     token:  20201211-1415 # The restore token to be validated before restoring the database. (Same as TEARDOWN_TOKEN)
 ```
 
-After forking the [MySQL](https://github.com/ecloudcontrol/MySQL) application, add app and acl records of `MySQL` application in the **AppZ Dashboard**.
-
-you should customize the following in **appz.yaml** file
+After forking the [MySQL](https://github.com/ecloudcontrol/MySQL) application, add app and acl records of `MySQL` application in the **AppZ Dashboard**. After, you should customize the following in **appz.yaml** file
 
 1. "notify" under **app** section.
   * notify:<email_id> , Update `email_id` with your email.
@@ -103,7 +101,7 @@ After customizing `appz.yaml` file, you should add the **Webhook**. You can get 
 Once **Webhook** is added, you should change the following in `setup.yaml`
 
 1. "token" under **restore** section.
-  * token:<current date-current UTC Time+10min>
+  * token:<yearmonthdate-current UTC Time+10min>
 
 
 ### Properties in `appz.yaml`
