@@ -63,13 +63,6 @@ If you fork [MySQL](https://github.com/ecloudcontrol/MySQL) under your Git accou
         nano: 67
 ```
 
-### Properties
-
-The image is vault enabled so secrets can be pulled from vault. These are placed under `properties` in `appz.yml`. Please check each one below, with its actual purpose.
-
-- **MYSQL_SPRINGBOOTWEB_PASSWORD** - Password of the MySQL user 'springboot-web'.
-- **MYSQL_ROOT_PASSWORD** - Password of the MySQL user 'root'.
-
 ###  setup.yaml
 
 ```
@@ -96,6 +89,31 @@ restore:
     token:  20201211-1415 # The restore token to be validated before restoring the database. (Same as TEARDOWN_TOKEN)
 ```
 
+After forking the [MySQL](https://github.com/ecloudcontrol/MySQL) application, add app and acl records of `MySQL` application in the **AppZ Dashboard**.
+
+you should customize the following in **appz.yaml** file
+
+1. "notify" under **app** section.
+  * notify:<email_id> , Update `email_id` with your email.
+2. "context" under **deploy** section
+  * context:<git_id>/DEV , Make sure you key in your git id.
+
+After customizing `appz.yaml` file, you should add the **Webhook**. You can get the **webhook** in the Output section of the Cloud Formation, at the end of **AppZ** Cluster creation. Follow the instructions here:[how to add webhook](https://www.ecloudcontrol.com/how-to-add-webhook-in-github/). Make sure the content type is **application/json**.
+
+Once **Webhook** is added, you should change the following in `setup.yaml`
+
+1. "token" under **restore** section.
+  * token:<current date-current UTC Time+10min>
+
+
+### Properties in `appz.yaml`
+
+The image is vault enabled so secrets can be pulled from vault. These are placed under `properties` in `appz.yml`. Please check each one below, with its actual purpose.
+
+- **MYSQL_SPRINGBOOTWEB_PASSWORD** - Password of the MySQL user 'springboot-web'.
+- **MYSQL_ROOT_PASSWORD** - Password of the MySQL user 'root'.
+
+### Explanation of `setup.yaml`
 
  * In the users section, name of each user (to be created) with password is required.
 
