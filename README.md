@@ -105,7 +105,7 @@ Once **Webhook** is added, you should change the token in `setup.yaml` and commi
 
 1. "token" under **restore** section.
 
-  * token:`yearmonthdate-current UTC Time+10min`
+  * token:`YearMonthDate-currentUTCTime+10min`
 
 
 ### Properties in `appz.yaml`
