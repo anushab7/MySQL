@@ -104,7 +104,8 @@ After customizing `appz.yaml` file, you should add the **Webhook**. You can get 
 Once **Webhook** is added, you should change the token in `setup.yaml` and commit the changes.
 
 1. "token" under **restore** section.
-  * token:<yearmonthdate-current UTC Time+10min>
+
+  * token:`yearmonthdate-current UTC Time+10min`
 
 
 ### Properties in `appz.yaml`
